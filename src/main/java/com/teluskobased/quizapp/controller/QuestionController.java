@@ -36,4 +36,9 @@ public class QuestionController  {
         return questionService.addQuestion(question);
     }
 
+    @PostMapping("update/{id}")
+    public void updateQuestion(@PathVariable Integer id, @RequestBody Question question) {
+        questionService.updateQuestion(id, question);
+    }
+
 }
