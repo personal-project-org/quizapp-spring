@@ -14,6 +14,7 @@ import com.teluskobased.quizapp.dao.QuizDao;
 import com.teluskobased.quizapp.model.Question;
 import com.teluskobased.quizapp.model.QuestionWrapper;
 import com.teluskobased.quizapp.model.Quiz;
+import com.teluskobased.quizapp.model.Response;
 
 @Service
 public class QuizService {
@@ -49,5 +50,19 @@ public class QuizService {
 
     private List<Question> getQuestions(Quiz quiz) {
         return quiz.getQuestion();
+    }
+
+    public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
+        Quiz quiz = quizDao.findById(id).get();
+        List<Question> questions = this.getQuestions(quiz);
+        int right = 0;
+        int index = 0;
+        for(Response response: responses){
+            String correctAnswerFromDB = questions.get(index).getRightAnswer();
+            if (response.getAnswerFromUser().equals(correctAnswerFromDB)) {
+                right++;
+            }
+        }
+        return new ResponseEntity<>(right,HttpStatus.OK);
     }
 }
