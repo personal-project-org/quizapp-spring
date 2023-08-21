@@ -64,4 +64,8 @@ public class QuestionService {
         }
         return null;
     }
+
+    public void deleteQuestionById(Integer id) {
+        questionDao.deleteById(id);
+    }
 }

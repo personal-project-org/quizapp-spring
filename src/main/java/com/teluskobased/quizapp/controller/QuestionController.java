@@ -3,6 +3,7 @@ package com.teluskobased.quizapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,8 +38,14 @@ public class QuestionController  {
     }
 
     @PostMapping("update/{id}")
-    public void updateQuestion(@PathVariable Integer id, @RequestBody Question question) {
-        questionService.updateQuestion(id, question);
+    public Question updateQuestion(@PathVariable Integer id, @RequestBody Question question) {
+        return questionService.updateQuestion(id, question);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public String deleteQuestion(@PathVariable Integer id) {
+        questionService.deleteQuestionById(id);
+        return "Successfully Deleted Question With ID " + id;
     }
 
 }
