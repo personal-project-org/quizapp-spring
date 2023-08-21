@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.teluskobased.quizapp.Question;
+import com.teluskobased.quizapp.model.Question;
 
 @Repository
 // JpaRepository contructor requires the table/class name and the primary key type (id)

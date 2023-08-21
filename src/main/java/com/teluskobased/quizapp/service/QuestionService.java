@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.teluskobased.quizapp.Question;
-import com.teluskobased.quizapp.dao.QuestionDao; 
+import com.teluskobased.quizapp.dao.QuestionDao;
+import com.teluskobased.quizapp.model.Question; 
 
 @Service
 public class QuestionService {

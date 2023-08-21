@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.teluskobased.quizapp.Question;
+import com.teluskobased.quizapp.model.Question;
 import com.teluskobased.quizapp.service.QuestionService;
 
 @RestController
