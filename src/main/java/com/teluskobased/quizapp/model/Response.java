@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Response {
     private Integer id;
-    private String answerFromUser;
+    private String userResponse;
 }

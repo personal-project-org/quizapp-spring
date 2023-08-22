@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public class QuizService {
     QuizDao quizDao;
     @Autowired
     QuestionDao questionDao;
+
+    private static final Logger logger = LoggerFactory.getLogger(QuizService.class);
+
 
     public ResponseEntity<String> createQuiz(String category, int numQ, String title) {
        List<Question> questions = questionDao.findRandomQuestionsByCategory(category, numQ);
@@ -58,8 +63,9 @@ public class QuizService {
         int right = 0;
         int index = 0;
         for(Response response: responses){
-            String correctAnswerFromDB = questions.get(index).getRightAnswer();
-            if (response.getAnswerFromUser().equals(correctAnswerFromDB)) {
+            String correctAnswerFromDB = questions.get(index).getCorrectAnswer();
+            System.out.println(correctAnswerFromDB + " &  User Response :" + response.getUserResponse());
+            if (response.getUserResponse().equals(correctAnswerFromDB)) {
                 right++;
             }
         }
